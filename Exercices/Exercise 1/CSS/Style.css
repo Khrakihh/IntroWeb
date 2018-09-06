@@ -1,2 +1,25 @@
+#body1 {
+    background-image: url(../images/Fond.jpg);
+    background-repeat: repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;}
+#body2 {
+    background-image: url(../images/Fond2.jpg);
+    background-repeat: repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;}
+
+p {
+    color: yellow;
+    border: 1px solid yellowgreen;
+    text-align: justify;
+}
+
+h1{
+    color: red;
+    text-decoration: underline ;
+    text-align: left;
+}
+
 
 
