@@ -3,31 +3,27 @@
 	width: 60%;
 }
 h1,h2{
-
 	text-align: center;
-
 }
 nav{
 
 	float:left;
-	padding-left: 10px;
-	padding-right: 20px;
 }
 
 #section1{
 	float:left;
-	width: 450px;
-	padding-right:10px;
+	width: 38%;
+	padding-left: 30px;
+	padding-right:20px;
 }
-
 #section2{
-	float:left;
-	width: 500px;
-	padding-bottom:20px;
+	float:left
+
 }
 footer{
 
-	float:bottom;
+	clear:left;
 	font-style:italic;
+
 
 }
