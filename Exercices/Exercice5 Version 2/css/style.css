@@ -1,0 +1,43 @@
+﻿main{
+	margin:0 auto; /* permet de centrer la page*/
+	width: 65%;
+	text-align:center;
+}
+nav
+{
+	width : 150px ;
+	border : 1px solid blue ;
+	text-align:left;
+	position:relative;
+	left: 50px;
+	bottom:-15px;
+}
+#section1
+{
+	border : 1px solid blue ;
+	width: 27%;
+	margin-left: 50px;
+	vertical-align:top;
+	position:relative;
+	top:-100px;
+	right:-200px;
+
+}
+#section2{
+	border : 1px solid blue ;
+	width: 27%;
+	margin-left: 50px;
+	vertical-align:top;
+	position:relative;
+	top:-237px;
+	right:-570px;
+
+}
+footer{
+	clear:left;
+	position: relative;
+	top:-225px;
+	left:-120px;
+}
+
+
