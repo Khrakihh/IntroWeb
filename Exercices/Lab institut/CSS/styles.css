@@ -159,6 +159,7 @@ label {
 	margin-bottom: 10px;
 	display: inline-block;
 	width: 150px;
+	vertical-align:center;
 }
 input{
 
@@ -195,6 +196,21 @@ em{
 	margin-left: 200px;
 	margin-top:-25px;
 	padding-left: 25px;
+
+}
+table{
+	width:70%;
+	height:19%;
+	border: solid black;
+	margin-bottom: 5%;
+	margin-top: 8%;
+	margin-left:18%;
+}
+th,td{
+	border-collapse: collapse;
+	border: solid purple;
+	width: 10%;
+	text-align:center;
 
 }
 
