@@ -10,7 +10,7 @@ function btnCalculer_onclick()
     BilletTot = BilAut + BilAut + Bil65;
     Prix = (Bil65*15) + (BilEtu * 12) + (BilAut * 20);
 
-    if(BilletTot >= 5)
+    if(BilletTot > 5)
 	{
 		Prix = Prix/1.10;
 	}

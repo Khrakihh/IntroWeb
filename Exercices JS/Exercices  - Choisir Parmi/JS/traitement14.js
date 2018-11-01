@@ -5,7 +5,8 @@ function btnCalculer_onclick()
     txtNbre1 = parseFloat(document.getElementById("txtNbre1").value);
     txtNbre2 = parseFloat(document.getElementById("txtNbre2").value);
 
-    <!if(txtOperateur == "+")
+
+    <if(txtOperateur == "+")
     {
         rep = txtNbre1 + txtNbre2;
     }
