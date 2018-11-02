@@ -1,37 +1,33 @@
 function btnCalculer_onclick()
 { 
- 	var txtNumSem, jour;
+ 	var NumSem, jour;
 
-    txtNumSem = parseFloat(document.getElementById("txtNumSem").value)
+    NumSem = parseFloat(document.getElementById("txtNumSem").value)
 
-    if(txtNumSem == 1)
+
+
+
+    switch(NumSem)
     {
-        jour = "dimanche";
+        case "1" : jour = "Dimanche";
+                   break;
+        case "2" : jour = "Lundi";
+            break;
+        case "3" : jour = "Mardi";
+            break;
+        case "4" : jour = "Mercredi";
+            break;
+        case "5" : jour = "Jeudi";
+            break;
+        case "6" : jour = "Vendredi";
+            break;
+        case "7" : jour = "Samedi";
+            break;
     }
-    else if(txtNumSem == 2)
-    {
-        jour = "Lundi";
-    }
-    else if(txtNumSem == 3)
-    {
-        jour = "Mardi";
-    }
-    else if(txtNumSem == 4)
-    {
-        jour = "Mercredi";
-    }
-    else if(txtNumSem == 5)
-    {
-        jour = "Jeudi";
-    }
-    else if(txtNumSem == 6)
-    {
-        jour = "Vendredi";
-    }
-    else if(txtNumSem == 7)
-    {
-        jour = "Samedi";
-    }
+
+
+
+
 
     console.log("Le jour de la semaine est : " + jour)
 }

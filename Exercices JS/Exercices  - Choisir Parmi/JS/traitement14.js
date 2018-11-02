@@ -1,27 +1,26 @@
 function btnCalculer_onclick()
 { 
- 	var txtNbre1,txtNbre2,txtOperateur,rep;
+ 	var Nbre1,Nbre2,Operateur,rep;
 
-    txtNbre1 = parseFloat(document.getElementById("txtNbre1").value);
-    txtNbre2 = parseFloat(document.getElementById("txtNbre2").value);
+    Nbre1 = parseFloat(document.getElementById("txtNbre1").value);
+    Nbre2 = parseFloat(document.getElementById("txtNbre2").value);
+    Operateur = document.getElementById("txtOperateur").value;
 
 
-    <if(txtOperateur == "+")
+
+    switch(Operateur)
     {
-        rep = txtNbre1 + txtNbre2;
+        case "+": rep = Nbre1 + Nbre2;
+                  break;
+        case "-": rep = Nbre1 - Nbre2;
+            break;
+        case "*": rep = Nbre1 * Nbre2;
+            break;
+        case "/": rep = Nbre1 / Nbre2;
+            break;
     }
-    else if(txtOperateur == "-")
-    {
-        rep = txtNbre1 - txtNbre2;
-    }
-    else if(txtOperateur == "*")
-    {
-        rep = txtNbre1 * txtNbre2;
-    }
-    else if(txtOperateur == "/")
-    {
-        rep = txtNbre1 / txtNbre2;
-    }
+
+
 
     console.log("La réponse est : " +rep);
 }

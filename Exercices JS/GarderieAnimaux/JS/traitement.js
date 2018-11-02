@@ -1,56 +1,76 @@
 function btnCalculer_onclick()
 {
-    var veterinaire,jrs,toilettage,Total,Tarif,Align;
+    var Veterinaire, NbJoursVete, Service, Toilettage, Animal, Total, Salaire, TotalVete, NbJour;
 
 
-    jrs = parseFloat(document.getElementById("txtNbreJours").value);
-    veterinaire = parseFloat(document.getElementById("txtNbreJours").value);
-    Total = parseFloat(document.getElementById("txtNbreJours").value);
+    Veterinaire = document.getElementById("lstVeterinaire").value;
+    NbJour = parseFloat(document.getElementById("txtNbreJours").value);
+    NbHeure = parseFloat(document.getElementById("NbHeure").value);
 
 
-    if((document.getElementById("Audrey Bouchard").checked) == true)
-    {
-        veterinaire = "Audrey Bouchard";
+    if (document.getElementById("chkServ").checked == true) {
+        Service = 5;
+        Toilettage = "avec";
+    }
+
+    else {
+        Service = 0;
+        Toilettage = "sans";
+    }
+
+    if (document.getElementById("radChien").checked == true) {
+        Animal = "Chien";
+        Total = 18.50;
+    }
+
+    else {
+        Animal = "Chat";
+        Total = 16.95;
 
     }
-    else if ((document.getElementById("Stéphane Tremblay").checked) == true)
+
+    switch (Veterinaire)
     {
-        veterinaire = "Stéphane Tremblay";
+        case "Audrey Bouchard" :Salaire = 25;
+                                break;
+        case "Stéphane Tremblay" :Salaire = 25;
+            break;
+        case "Maxime Simard" :Salaire = 25;
+            break;
+        case "Mélissa Caron" :Salaire = 25;
+            break;
     }
-    else if ((document.getElementById("Maxime Simard").checked) == true)
+
+    TotalVete = NbJoursVete * Salaire;
+
+    Total = (Total * NbJour * 1.14975) + TotalVete + Service;
+
+
+    if (NbJoursVete >= 5 && NbJoursVete <= 10)
     {
-        veterinaire = "Maxime Simard";
+        Total = Total / 1.05;
+    }
+    else if (NbJoursVete >= 10 && NbJoursVete <= 30)
+    {
+        Total = Total / 1.10;
+    }
+    else if (NbJoursVete > 30)
+    {
+        Total = Total / 1.15;
     }
     else
     {
-        veterinaire = "Maxime Simard";
+        Total = Total * 1;
     }
 
 
-    if((document.getElementById("chkServ").checked) == true)
-    {
-        Total = Total+5;
-    }
-
-    if((document.getElementById("radChien").checked) == true)
-    {
-        Tarif = 18.50;
-    }
-    else
-    {
-        Tarif = 16.95
-    }
-
-    Total = (jrs * Tarif)* 1.14975 ;
-
-    Console.log("Le vétérinaire responsable est " + veterinaire + "le coût du montant pour la garde de votre" + Align +"est de " + Total + "pour " + "jour(s)")
-
-
-
-
-
-
-
-
-
+    console.log("Vétérinaire responsable est " + Veterinaire + ". Le montant pour la garde de votre " + Animal + " est de " + Total.toFixed(2) + " pour " + NbJour + ", jour(s) " + Toilettage + " service de toilettage.");
+}
+function btnAfficher1_onclick ()
+{
+    document.getElementById("imgChien").src= "img/Chien.jpg";
+}
+function btnAfficher2_onclick ()
+{
+    document.getElementById("imgChat").src= "img/Chat.jpg";
 }
