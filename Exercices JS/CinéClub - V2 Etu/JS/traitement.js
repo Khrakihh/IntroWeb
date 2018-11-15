@@ -62,7 +62,7 @@ function calculInfo()
 
 }
 
-function btnDeroulant_onchange1(num)
+function lstDeroulant_onchange(num)
 {
     document.getElementById("photo").src = "img/"+num+".jpg";
 
