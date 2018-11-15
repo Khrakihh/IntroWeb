@@ -6,12 +6,19 @@ function btnCalculer_onclick()
     Nbre2 = parseFloat(document.getElementById("txtNbre2").value);
     Operateur = document.getElementById("txtOperateur").value;
 
+    rep = operateur();
 
+    afficherInfo();
 
+}
+
+function operateurCalculer(Nbr1,Nbr2,rep)
+{
+    var Operateur;
     switch(Operateur)
     {
         case "+": rep = Nbre1 + Nbre2;
-                  break;
+            break;
         case "-": rep = Nbre1 - Nbre2;
             break;
         case "*": rep = Nbre1 * Nbre2;
@@ -20,7 +27,13 @@ function btnCalculer_onclick()
             break;
     }
 
+    return rep;
+}
+function afficherInfo()
+{
 
 
-    console.log("La réponse est : " +rep);
+
+    console.log("La réponse est : " + rep);
+
 }
