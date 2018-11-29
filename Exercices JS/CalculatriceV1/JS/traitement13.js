@@ -4,7 +4,9 @@ function btnCalculer_onclick()
 
     NumSem = parseFloat(document.getElementById("txtNumSem").value)
 
+ jour= choixJour();
 
+function choixJour() {
 
     switch (NumSem) {
         case "1" :
@@ -29,7 +31,8 @@ function btnCalculer_onclick()
             jour = "Samedi";
             break;
     }
-
+    return jour;
+}
 
 
 

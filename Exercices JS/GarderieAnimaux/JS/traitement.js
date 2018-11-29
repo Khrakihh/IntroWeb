@@ -1,76 +1,98 @@
-function btnCalculer_onclick()
+var ChoixVeterinaire, Total, NbrJrs, CoutToilettage, service,rabais,Heure,tauxHoraire,animaux;
+
+function btnCalculer_onclick(){
+    saisirInforamtion();
+    choixToilettage();
+    choixAnimaux();
+    saisirNbrJrs();
+    choixVeterinaire();
+    calculerVariables();
+    afficherInformations();
+}
+
+function saisirInforamtion()
 {
-    var Veterinaire, NbJoursVete, Service, Toilettage, Animal, Total, Salaire, TotalVete, NbJour;
-
-
-    Veterinaire = document.getElementById("lstVeterinaire").value;
-    NbJour = parseFloat(document.getElementById("txtNbreJours").value);
-    NbHeure = parseFloat(document.getElementById("NbHeure").value);
-
-
+    ChoixVeterinaire = document.getElementById("lstVeterinaire").value;
+    NbrJrs = parseFloat(document.getElementById("txtNbreJours").value);
+    Heure = parseFloat(document.getElementById("txtHeure").value);
+}
+function choixToilettage()
+{
     if (document.getElementById("chkServ").checked == true) {
-        Service = 5;
-        Toilettage = "avec";
+        CoutToilettage = 5;
+        service = "avec";
     }
-
     else {
-        Service = 0;
-        Toilettage = "sans";
+        CoutToilettage = 0;
+        service = "sans";
     }
-
+}
+function choixAnimaux()
+{
     if (document.getElementById("radChien").checked == true) {
-        Animal = "Chien";
         Total = 18.50;
-    }
+        animaux="chien";
 
+    }
     else {
-        Animal = "Chat";
         Total = 16.95;
-
+        animaux="chat";
     }
-
-    switch (Veterinaire)
-    {
-        case "Audrey Bouchard" :Salaire = 25;
-                                break;
-        case "Stéphane Tremblay" :Salaire = 25;
-            break;
-        case "Maxime Simard" :Salaire = 25;
-            break;
-        case "Mélissa Caron" :Salaire = 25;
-            break;
-    }
-
-    TotalVete = NbJoursVete * Salaire;
-
-    Total = (Total * NbJour * 1.14975) + TotalVete + Service;
-
-
-    if (NbJoursVete >= 5 && NbJoursVete <= 10)
-    {
-        Total = Total / 1.05;
-    }
-    else if (NbJoursVete >= 10 && NbJoursVete <= 30)
-    {
-        Total = Total / 1.10;
-    }
-    else if (NbJoursVete > 30)
-    {
-        Total = Total / 1.15;
-    }
-    else
-    {
-        Total = Total * 1;
-    }
-
-
-    console.log("Vétérinaire responsable est " + Veterinaire + ". Le montant pour la garde de votre " + Animal + " est de " + Total.toFixed(2) + " pour " + NbJour + ", jour(s) " + Toilettage + " service de toilettage.");
 }
-function btnAfficher1_onclick ()
+function saisirNbrJrs()
 {
-    document.getElementById("imgChien").src= "img/Chien.jpg";
+    if (1<=NbrJrs && NbrJrs<5)
+    {
+        rabais=1;
+    }
+    else if(5<=NbrJrs && NbrJrs<10)
+    {
+        rabais=0.95;
+    }
+    else if(10<=NbrJrs && NbrJrs<30)
+    {
+        rabais=0.90;
+    }
+    else if(30<=NbrJrs)
+    {
+        rabais=0.85;
+    }
 }
-function btnAfficher2_onclick ()
+function choixVeterinaire()
 {
-    document.getElementById("imgChat").src= "img/Chat.jpg";
+    switch(ChoixVeterinaire)
+    {
+        case "Audrey Bouchard": tauxHoraire=25*Heure;
+            break;
+        case "Stéphane Tremblay": tauxHoraire=35*Heure;
+            break;
+        case "Maxime Simard": tauxHoraire=40*Heure;
+            break;
+        case "Mélissa Caron": tauxHoraire=45*Heure;
+            break;
+    }
+}
+function calculerVariables()
+{
+    Total=(((((Total*NbrJrs)+CoutToilettage)*rabais)*1.14975)+tauxHoraire);
+}
+function afficherInformations()
+{
+    console.log("Le total es de "+ Total.toFixed(2)+"$" +" pour un nombre d'heure est de "+Heure +" avec le vétérinaire "+ ChoixVeterinaire + " avec un salaire de "+tauxHoraire+" pour "+NbrJrs+" jours "+" et "+service+" toilettage "+" pour un "+animaux );
+    document.getElementById("lblMessage").innerHTML="Le total es de "+ Total.toFixed(2)+" $ " +" pour un nombre d'heure de "+Heure +" avec le vétérinaire "+ ChoixVeterinaire + " avec un salaire de"+tauxHoraire+" pour "+NbrJrs+" jours "+" et "+service+" toilettage "+" pour un "+animaux
+}
+function btnAfficher_onclick(){
+    document.getElementById("img1").src= "img/Content.jpg";
+}
+function btnAfficher2_onclick(){
+    document.getElementById("img2").src= "img/Rien.jpg";
+}
+function btnAfficher3_onclick(){
+    document.getElementById("img3").src= "img/Triste.jpg";
+}
+function btnAfficher4_onclick(){
+    document.getElementById("img4").src= "img/chien.jpg";
+}
+function btnAfficher5_onclick(){
+    document.getElementById("img5").src= "img/chat.jpg";
 }
