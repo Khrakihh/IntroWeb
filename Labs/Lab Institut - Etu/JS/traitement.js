@@ -1,115 +1,149 @@
-function frmMembre_onclick()
+function frmMembre_onSubmit()
 {
-    if(validFormat() === true)
+    var valid=true;
+    if(validChampsObli()===true)
     {
-        traiterInfo();
-    }
 
-}
-
-function traiterInfo()
-{
-
-}
-
-function ValidChampObligatoires()
-{
-    var tabVerif = new Array ("txtNom,txtPrenom,txtAdresse,txtVille,txtTel");
-    var Valide = false;
-    for (var i = 0; i< tabVerif.length; i++)
-    {
-        if(validExist(tabVerif[i])=== true)
+        if(format()===true)
         {
-            Valide=true;
+            if (confirm(("voulez-vous valider votre inscription, le cout seras de :"+traiterInfo()+" $")) === false)
+            {
+                valid=false;
+            }
+        }
+        else{
+            valid=false;
         }
 
-        return Valide;
     }
+    else{
+        valid=false;
+    }
+    return valid;
+}
+function traiterInfo()
+{
+    var prix;
+    var ChoixAge=document.getElementById("type").value;
+    if(ChoixAge==="adulte")
+    {
+        prix=90;
+    }
+    else if(ChoixAge==="étudiant"){
+        prix=60;
+    }
+    else{
+        prix=80;
+    }
+    return prix;
+}
+function validChampsObli()
+{
+    var TabListNom= new Array("txtNom","txtPrenom","txtAdresse","txtVille","txtTel")
+    var i=0;
+    var valid=true;
+    for(i;i<TabListNom.length;i++)
+    {
+        if(validExist(TabListNom[i])===false)
+        {
+            valid=false;
+        }
+    }
+    return valid;
 }
 
-function validExist(NomID)
+function validExist(NomId)
 {
     var validation;
-    if(document.getElementById(NomID).value==="")
+    if(document.getElementById(NomId).value==="")
     {
-        document.getElementById(NomID).style.backgroundColor = "red";
+        document.getElementById("lblMessageErreur").innerHTML="Tous les champs ayant une étoile sont obligatoires";
         validation=false;
     }
     else {
-        document.getElementById(NomID).style.backgroundColor = "white";
+        document.getElementById("lblMessageErreur").innerHTML="";
         validation=true;
     }
     return validation;
 }
-
-function validFormat()
+function format()
 {
-    var Valide = true;
+    var valid=true;
 
-    if(NomPrenomVilleValidation(document.getElementById("txtNom").value)==false)
+    if(validNom(document.getElementById("txtNom").value)===false)
     {
         document.getElementById("txtNom").style.borderColor = "red";
-        Valide = false;
+        valid=false;
     }
-
-    else if((NomPrenomVilleValidation(document.getElementById("txtPrenom").value)==false))
+    else{
+        document.getElementById("txtNom").style.borderColor = "";
+    }
+    if(validNom(document.getElementById("txtPrenom").value)===false)
     {
         document.getElementById("txtPrenom").style.borderColor = "red";
-        Valide = false;
+        valid=false;
     }
-
-    else if((NomPrenomVilleValidation(document.getElementById("txtVille").value)==false))
-    {
-        document.getElementById("txtVille").style.borderColor = "red";
-        Valide = false;
+    else{
+        document.getElementById("txtPrenom").style.borderColor = "";
     }
-
-    else if((AdresseValidation(document.getElementById("txtAdresse").value)==false))
+    if(validRue(document.getElementById("txtAdresse").value)===false)
     {
         document.getElementById("txtAdresse").style.borderColor = "red";
-        Valide = false;
+        valid=false;
     }
-
-    else if((TelephoneValidation(document.getElementById("txtTel").value)==false))
+    else{
+        document.getElementById("txtAdresse").style.borderColor = "";
+    }
+    if(validNom(document.getElementById("txtVille").value)===false)
     {
-        document.getElementById("txtTel").style.borderColor = "red";
-        Valide = false;
+        document.getElementById("txtVille").style.borderColor = "red";
+        valid=false;
     }
-
-    else if((CodePostalValidation(document.getElementById("txtCodePostal").value)==false))
+    else{
+        document.getElementById("txtVille").style.borderColor = "";
+    }
+    if(validCodePost(document.getElementById("txtCodePostal").value)===false)
     {
         document.getElementById("txtCodePostal").style.borderColor = "red";
-        Valide = false;
+        valid=false;
     }
-
-    return Valide;
+    else{
+        document.getElementById("txtCodePostal").style.borderColor = "";
+    }
+    if(validTel(document.getElementById("txtTel").value)===false)
+    {
+        document.getElementById("txtTel").style.borderColor = "red";
+        valid=false;
+    }
+    else{
+        document.getElementById("txtTel").style.borderColor = "";
+    }
+    return valid;
 }
-
-
-function NomPrenomVilleValidation()
+function validNom(chaine)
 {
-    return /^(([A-Ë]|[a-ë])+(-)?([A-Ë]|[a-ë])+)$/
+    return /^([A-z]|[À-ë])+-?([A-z]|[À-ë])+$/.test(chaine);
 }
-
-function AdresseValidation()
+function validRue(chaine)
 {
-    return
+    return /^(\d{4}) ([A-z]|[À-ë])+-?([A-z]|[À-ë])+$/.test(chaine);
 }
-
-function CodePostalValidation()
+function validCodePost(chaine)
 {
-    return /^([A-z]{1}[0-9]{1}[A-z]{1} [0-9]{1}[A-z]{1}[0-9]{1})$/
+    return   /^[A-z]\d[A-z]\d[A-z]\d$/.test(chaine);
 }
-
-function TelephoneValidation()
+function  validTel(chaine)
 {
-    /^(([0-9]{3}-[0-9]{3}-[0-9]{4})|(\([0-9]{3}\) [0-9]{3}-[0-9]{4}))$/
+    return   /^(\(\d{3}\) \d{3}-\d{4})|(\d{3}-\d{3}-\d{4})$/.test(chaine);
 }
-
-function CodePermanentValidation()
+function validPerma(chaine)
 {
+    return  /^([A-zÀ-ë]{4}[0-9]{8})$/.test(chaine);
+}
+function Confirm()
+{
+    var txt;
+    var r=confirm("Appuie sur oui pour continuer");
+
 
 }
-
-
-
